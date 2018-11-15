@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MercadoLibreAPIJava</string>
+    <string name="meli_app_id">4911220138040441</string>
+    <string name="meli_redirect_uri">https://programacionmaster.wordpress.com</string>
 </resources>
