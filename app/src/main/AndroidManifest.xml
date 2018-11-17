@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
 
         <!-- Declare the MercadoLibreActivity as required by the SDK -->
         <activity
@@ -36,6 +35,15 @@
         <meta-data
             android:name="com.mercadolibre.android.sdk.RedirectUrl"
             android:value="@string/meli_redirect_uri" />
+
+        <activity
+            android:name=".QueriesWithAuthActivity"
+            android:label="@string/title_activity_queries_with_auth"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".QueriesWithoutAuthActivity"
+            android:label="@string/title_activity_queries_without_auth"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
