@@ -38,12 +38,10 @@
 
         <activity
             android:name=".QueriesWithAuthActivity"
-            android:label="@string/title_activity_queries_with_auth"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_queries_with_auth"/>
         <activity
             android:name=".QueriesWithoutAuthActivity"
-            android:label="@string/title_activity_queries_without_auth"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_queries_without_auth"/>
     </application>
 
 </manifest>
