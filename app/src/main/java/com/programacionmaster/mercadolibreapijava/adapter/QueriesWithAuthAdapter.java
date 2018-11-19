@@ -9,12 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.programacionmaster.mercadolibreapijava.R;
+import com.programacionmaster.mercadolibreapijava.model.Resource;
+
+import java.util.List;
 
 public class QueriesWithAuthAdapter extends RecyclerView.Adapter<QueriesWithAuthAdapter.QueriesWithAuthViewHolder> {
 
-    private String[] data;
+    private List<Resource> data;
 
-    public QueriesWithAuthAdapter(String[] data) {
+    public QueriesWithAuthAdapter(List<Resource> data) {
         this.data = data;
     }
 
@@ -27,12 +30,13 @@ public class QueriesWithAuthAdapter extends RecyclerView.Adapter<QueriesWithAuth
 
     @Override
     public void onBindViewHolder(@NonNull QueriesWithAuthViewHolder queriesWithAuthViewHolder, int i) {
-        queriesWithAuthViewHolder.textViewTitle.setText(data[i]);
+        queriesWithAuthViewHolder.textViewTitle.setText(data.get(i).getTitle());
+        queriesWithAuthViewHolder.textViewDescription.setText(data.get(i).getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return data.size();
     }
 
     /**
@@ -41,11 +45,13 @@ public class QueriesWithAuthAdapter extends RecyclerView.Adapter<QueriesWithAuth
     public class QueriesWithAuthViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textViewTitle;
+        public TextView textViewDescription;
         public QueriesWithAuthAdapter adapter;
 
         public QueriesWithAuthViewHolder(@NonNull View itemView, QueriesWithAuthAdapter adapter) {
             super(itemView);
-            this.textViewTitle = itemView.findViewById(R.id.textViewItem);
+            this.textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            this.textViewDescription = itemView.findViewById(R.id.textViewDescription);
             itemView.setOnClickListener(this);
             this.adapter = adapter;
         }

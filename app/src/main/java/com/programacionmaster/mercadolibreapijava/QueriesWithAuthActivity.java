@@ -5,7 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.programacionmaster.mercadolibreapijava.adapter.QueriesWithoutAdapter;
+import com.programacionmaster.mercadolibreapijava.adapter.QueriesWithAuthAdapter;
+import com.programacionmaster.mercadolibreapijava.model.Resource;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class QueriesWithAuthActivity extends AppCompatActivity {
 
@@ -25,30 +30,15 @@ public class QueriesWithAuthActivity extends AppCompatActivity {
         // use a linear layout manager
         recyclerViewQueries.setLayoutManager(new LinearLayoutManager(this));
 
-        String[] data = {
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites"
-        };
+        Resource resource1 = Resource.from(UUID.randomUUID().toString(),
+                "Get user authenticated information", "Get information from current user authenticated from Meli", "/users/me");
 
-        recyclerViewQueries.setAdapter(new QueriesWithoutAdapter(data));
+        Resource resource2 = Resource.from(UUID.randomUUID().toString(),
+                "Get Item By ID", "Get item by ID from Meli", "/items/MLA608007087");
+        List<Resource> resources = new ArrayList<>();
+        resources.add(resource1);
+        resources.add(resource2);
+
+        recyclerViewQueries.setAdapter(new QueriesWithAuthAdapter(resources));
     }
 }
