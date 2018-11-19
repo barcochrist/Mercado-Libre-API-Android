@@ -16,7 +16,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textViewItem"
+                android:id="@+id/textViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp" />
@@ -24,8 +24,7 @@
             <TextView
                 android:id="@+id/textViewDescription"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ejemplo de descripción..." />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

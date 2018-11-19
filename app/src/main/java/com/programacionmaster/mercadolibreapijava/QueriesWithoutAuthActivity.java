@@ -7,6 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.programacionmaster.mercadolibreapijava.adapter.QueriesWithoutAdapter;
+import com.programacionmaster.mercadolibreapijava.model.Resource;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class QueriesWithoutAuthActivity extends AppCompatActivity {
 
@@ -29,31 +34,16 @@ public class QueriesWithoutAuthActivity extends AppCompatActivity {
 
         recyclerViewQueries.setItemAnimator(new DefaultItemAnimator());
 
-        String[] data = {
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites",
-                "All Categories",
-                "Items by Category",
-                "All sites"
-        };
+        Resource resource1 = Resource.from(UUID.randomUUID().toString(),
+                "All Sites", "Get all sites from Meli", "/sites");
 
-        mAdapter = new QueriesWithoutAdapter(data);
+        Resource resource2 = Resource.from(UUID.randomUUID().toString(),
+                "All Categories of Colombia", "Get all categories of Colombia from Meli", "/sites/MCO/categories");
+        List<Resource> resources = new ArrayList<>();
+        resources.add(resource1);
+        resources.add(resource2);
+
+        mAdapter = new QueriesWithoutAdapter(resources);
         recyclerViewQueries.setAdapter(mAdapter);
     }
 }
