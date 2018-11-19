@@ -37,11 +37,11 @@
             android:value="@string/meli_redirect_uri" />
 
         <activity
-            android:name=".QueriesWithAuthActivity"
-            android:label="@string/title_activity_queries_with_auth"/>
+            android:name=".ResourcesWithAuthActivity"
+            android:label="@string/title_activity_resources_with_auth" />
         <activity
-            android:name=".QueriesWithoutAuthActivity"
-            android:label="@string/title_activity_queries_without_auth"/>
+            android:name=".ResourcesWithoutAuthActivity"
+            android:label="@string/title_activity_resources_without_auth" />
     </application>
 
 </manifest>

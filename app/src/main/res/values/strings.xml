@@ -3,7 +3,7 @@
     <string name="meli_app_id">4911220138040441</string>
     <string name="meli_redirect_uri">https://programacionmaster.wordpress.com</string>
 
-    <string name="title_activity_queries_with_auth">Consultas con Autenticación</string>
-    <string name="title_activity_queries_without_auth">Consultas sin Autenticación</string>
+    <string name="title_activity_resources_with_auth">Recursos con Autenticación</string>
+    <string name="title_activity_resources_without_auth">Recursos sin Autenticación</string>
     <string name="action_settings">Settings</string>
 </resources>

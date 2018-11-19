@@ -5,14 +5,14 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btnQueriesWithAuth"
+        android:id="@+id/btnResourcesWithAuth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultas con Autenticación" />
+        android:text="Recursos con Autenticación" />
 
     <Button
-        android:id="@+id/btnQueriesWithOutAuth"
+        android:id="@+id/btnResourcesWithOutAuth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultas sin Autenticación" />
+        android:text="Recursos sin Autenticación" />
 </LinearLayout>

@@ -16,23 +16,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Init UI Components
-        Button btnQueriesWithAuth = findViewById(R.id.btnQueriesWithAuth);
-        Button btnQueriesWithOutAuth = findViewById(R.id.btnQueriesWithOutAuth);
+        Button btnResourcesWithAuth = findViewById(R.id.btnResourcesWithAuth);
+        Button btnResourcesWithOutAuth = findViewById(R.id.btnResourcesWithOutAuth);
 
         Meli.initializeSDK(getApplicationContext());
 
-        btnQueriesWithAuth.setOnClickListener(new View.OnClickListener() {
+        btnResourcesWithAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), QueriesWithAuthActivity.class);
+                Intent intent = new Intent(view.getContext(), ResourcesWithAuthActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnQueriesWithOutAuth.setOnClickListener(new View.OnClickListener() {
+        btnResourcesWithOutAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), QueriesWithoutAuthActivity.class);
+                Intent intent = new Intent(view.getContext(), ResourcesWithoutAuthActivity.class);
                 startActivity(intent);
             }
         });

@@ -13,25 +13,25 @@ import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 import java.util.List;
 
-public class QueriesWithoutAdapter extends RecyclerView.Adapter<QueriesWithoutAdapter.QueriesWithoutViewHolder> {
+public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesWithoutAuthAdapter.ResourcesWithoutAuthViewHolder> {
 
     private List<Resource> data;
 
-    public QueriesWithoutAdapter(@NonNull List<Resource> data) {
+    public ResourcesWithoutAuthAdapter(@NonNull List<Resource> data) {
         this.data = data;
     }
 
     @NonNull
     @Override
-    public QueriesWithoutViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_queries_without_auth, viewGroup, false);
-        return new QueriesWithoutViewHolder(view, this);
+    public ResourcesWithoutAuthViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_without_auth, viewGroup, false);
+        return new ResourcesWithoutAuthViewHolder(view, this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QueriesWithoutViewHolder queriesWithoutViewHolder, int i) {
-        queriesWithoutViewHolder.textViewTitle.setText(data.get(i).getTitle());
-        queriesWithoutViewHolder.textViewDescription.setText(data.get(i).getDescription());
+    public void onBindViewHolder(@NonNull ResourcesWithoutAuthViewHolder resourcesWithoutAuthViewHolder, int i) {
+        resourcesWithoutAuthViewHolder.textViewTitle.setText(data.get(i).getTitle());
+        resourcesWithoutAuthViewHolder.textViewDescription.setText(data.get(i).getDescription());
     }
 
     @Override
@@ -41,14 +41,14 @@ public class QueriesWithoutAdapter extends RecyclerView.Adapter<QueriesWithoutAd
 
 
     /**
-     * View Holder class to Queries without authentication
+     * View Holder class to {@link ResourcesWithoutAuthAdapter}
      */
-    public class QueriesWithoutViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ResourcesWithoutAuthViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textViewTitle;
         public TextView textViewDescription;
-        public QueriesWithoutAdapter adapter;
+        public ResourcesWithoutAuthAdapter adapter;
 
-        public QueriesWithoutViewHolder(View view, QueriesWithoutAdapter adapter) {
+        public ResourcesWithoutAuthViewHolder(View view, ResourcesWithoutAuthAdapter adapter) {
             super(view);
             this.textViewTitle = view.findViewById(R.id.textViewTitle);
             this.textViewDescription = view.findViewById(R.id.textViewDescription);
