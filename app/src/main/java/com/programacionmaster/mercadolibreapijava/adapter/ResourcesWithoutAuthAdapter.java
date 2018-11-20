@@ -1,14 +1,15 @@
 package com.programacionmaster.mercadolibreapijava.adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.programacionmaster.mercadolibreapijava.R;
+import com.programacionmaster.mercadolibreapijava.ResourceDetailActivity;
 import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 import java.util.List;
@@ -58,7 +59,8 @@ public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesW
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), "Item clicked", Toast.LENGTH_SHORT);
+            Intent intent = new Intent(view.getContext(), ResourceDetailActivity.class);
+            view.getContext().startActivity(intent);
         }
     }
 }
