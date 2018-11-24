@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.programacionmaster.mercadolibreapijava.adapter.ResourcesWithAuthAdapter;
+import com.programacionmaster.mercadolibreapijava.enums.HttpMethod;
+import com.programacionmaster.mercadolibreapijava.enums.ResourceType;
 import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 import java.util.ArrayList;
@@ -31,10 +33,14 @@ public class ResourcesWithAuthActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Resource resource1 = Resource.from(UUID.randomUUID().toString(),
-                "Get user authenticated information", "Get information from current user authenticated from Meli", "/users/me");
+                "Get user authenticated information",
+                "Get information from current user authenticated from Meli",
+                "/users/me", ResourceType.WITH_AUTH, HttpMethod.GET);
 
         Resource resource2 = Resource.from(UUID.randomUUID().toString(),
-                "Get Item By ID", "Get item by ID from Meli", "/items/MLA608007087");
+                "Get Item By ID", "Get item by ID from Meli",
+                "/items/MLA608007087", ResourceType.WITH_AUTH, HttpMethod.GET);
+
         List<Resource> resources = new ArrayList<>();
         resources.add(resource1);
         resources.add(resource2);

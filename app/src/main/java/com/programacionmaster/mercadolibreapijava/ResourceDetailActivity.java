@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 public class ResourceDetailActivity extends AppCompatActivity {
 
@@ -16,7 +19,11 @@ public class ResourceDetailActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        TextView textViewDescription = findViewById(R.id.textViewDescription);
+        TextView textViewUri = findViewById(R.id.textViewUri);
+        TextView textViewMethod = findViewById(R.id.textViewMethod);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,5 +31,11 @@ public class ResourceDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Resource resource = (Resource) getIntent().getSerializableExtra(getString(R.string.intent_resource_key));
+        setTitle(resource.getTitle());
+        textViewDescription.setText(resource.getDescription());
+        textViewUri.setText(resource.getUri());
+        textViewMethod.setText(resource.getMethod().toString());
     }
 }

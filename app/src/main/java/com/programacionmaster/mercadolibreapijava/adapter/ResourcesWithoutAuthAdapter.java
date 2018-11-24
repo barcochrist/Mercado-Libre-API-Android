@@ -1,6 +1,7 @@
 package com.programacionmaster.mercadolibreapijava.adapter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesW
 
     @Override
     public void onBindViewHolder(@NonNull ResourcesWithoutAuthViewHolder resourcesWithoutAuthViewHolder, int i) {
+        resourcesWithoutAuthViewHolder.resource = data.get(i);
         resourcesWithoutAuthViewHolder.textViewTitle.setText(data.get(i).getTitle());
         resourcesWithoutAuthViewHolder.textViewDescription.setText(data.get(i).getDescription());
     }
@@ -48,6 +50,7 @@ public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesW
         public TextView textViewTitle;
         public TextView textViewDescription;
         public ResourcesWithoutAuthAdapter adapter;
+        public Resource resource;
 
         public ResourcesWithoutAuthViewHolder(View view, ResourcesWithoutAuthAdapter adapter) {
             super(view);
@@ -60,6 +63,9 @@ public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesW
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ResourceDetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(view.getContext().getString(R.string.intent_resource_key), resource);
+            intent.putExtras(bundle);
             view.getContext().startActivity(intent);
         }
     }

@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.programacionmaster.mercadolibreapijava.adapter.ResourcesWithoutAuthAdapter;
+import com.programacionmaster.mercadolibreapijava.enums.HttpMethod;
+import com.programacionmaster.mercadolibreapijava.enums.ResourceType;
 import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 import java.util.ArrayList;
@@ -34,14 +36,16 @@ public class ResourcesWithoutAuthActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         Resource resource1 = Resource.from(UUID.randomUUID().toString(),
-                "All Sites", "Get all sites from Meli", "/sites");
+                "All Sites", "Get all sites from Meli", "/sites",
+                ResourceType.WITHOUT_AUTH, HttpMethod.GET);
 
         Resource resource2 = Resource.from(UUID.randomUUID().toString(),
-                "All Categories of Colombia", "Get all categories of Colombia from Meli", "/sites/MCO/categories");
+                "All Categories of Colombia", "Get all categories of Colombia from Meli",
+                "/sites/MCO/categories", ResourceType.WITHOUT_AUTH, HttpMethod.GET);
+
         List<Resource> resources = new ArrayList<>();
         resources.add(resource1);
         resources.add(resource2);
-
         recyclerView.setAdapter(new ResourcesWithoutAuthAdapter(resources));
     }
 }
