@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.programacionmaster.mercadolibreapijava.R;
-import com.programacionmaster.mercadolibreapijava.ResourceDetailActivity;
+import com.programacionmaster.mercadolibreapijava.ResourceResultActivity;
 import com.programacionmaster.mercadolibreapijava.model.Resource;
 
 import java.util.List;
@@ -62,7 +62,7 @@ public class ResourcesWithoutAuthAdapter extends RecyclerView.Adapter<ResourcesW
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(view.getContext(), ResourceDetailActivity.class);
+            Intent intent = new Intent(view.getContext(), ResourceResultActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable(view.getContext().getString(R.string.intent_resource_key), resource);
             intent.putExtras(bundle);
