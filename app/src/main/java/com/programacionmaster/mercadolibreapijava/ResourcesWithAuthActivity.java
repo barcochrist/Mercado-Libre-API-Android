@@ -35,11 +35,11 @@ public class ResourcesWithAuthActivity extends AppCompatActivity {
         Resource resource1 = Resource.from(UUID.randomUUID().toString(),
                 "Get user authenticated information",
                 "Get information from current user authenticated from Meli",
-                "/users/me", ResourceType.WITH_AUTH, HttpMethod.GET);
+                "/users/me", ResourceType.USER, HttpMethod.GET);
 
         Resource resource2 = Resource.from(UUID.randomUUID().toString(),
                 "Get Item By ID", "Get item by ID from Meli",
-                "/items/MLA608007087", ResourceType.WITH_AUTH, HttpMethod.GET);
+                "/items/MLA608007087", ResourceType.ITEM, HttpMethod.GET);
 
         List<Resource> resources = new ArrayList<>();
         resources.add(resource1);

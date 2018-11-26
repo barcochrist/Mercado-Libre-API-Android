@@ -1,6 +1,8 @@
 package com.programacionmaster.mercadolibreapijava;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,9 +11,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.programacionmaster.mercadolibreapijava.dummy.DummyContent;
-import com.programacionmaster.mercadolibreapijava.dummy.DummyContent.DummyItem;
+import com.programacionmaster.mercadolibreapijava.adapter.SiteItemAdapter;
+import com.programacionmaster.mercadolibreapijava.model.Resource;
+import com.programacionmaster.mercadolibreapijava.service.SiteService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A fragment representing a list of Items.
@@ -21,11 +32,14 @@ import com.programacionmaster.mercadolibreapijava.dummy.DummyContent.DummyItem;
  */
 public class SiteItemFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
+    private static final String ARG_RESOURCE = "resource";
+
     private int mColumnCount = 1;
+    private Resource resource;
     private OnListFragmentInteractionListener mListener;
+    private SiteItemAdapter siteItemAdapter;
+    private List<SiteService.Site> sites;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -34,12 +48,12 @@ public class SiteItemFragment extends Fragment {
     public SiteItemFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static SiteItemFragment newInstance(int columnCount) {
+    public static SiteItemFragment newInstance(int columnCount, Resource argResource) {
         SiteItemFragment fragment = new SiteItemFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putSerializable(ARG_RESOURCE, argResource);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,6 +64,7 @@ public class SiteItemFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            resource = (Resource) getArguments().getSerializable(ARG_RESOURCE);
         }
     }
 
@@ -57,6 +72,8 @@ public class SiteItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_siteitem_list, container, false);
+        //Init sites list
+        sites = new ArrayList<>();
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -67,7 +84,9 @@ public class SiteItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new SiteItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            siteItemAdapter = new SiteItemAdapter(sites, mListener);
+            recyclerView.setAdapter(siteItemAdapter);
+            loadSites();
         }
         return view;
     }
@@ -101,7 +120,28 @@ public class SiteItemFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(SiteService.Site item);
+    }
+
+    /**
+     * Load sites in Recycler view
+     */
+    private void loadSites() {
+        SiteService.getAll().enqueue(new Callback<List<SiteService.Site>>() {
+            @Override
+            public void onResponse(Call<List<SiteService.Site>> call, Response<List<SiteService.Site>> response) {
+                if (response.isSuccessful()) {
+                    for (SiteService.Site site : response.body()) {
+                        sites.add(site);
+                    }
+                    siteItemAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SiteService.Site>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error loading sites", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

@@ -37,11 +37,11 @@ public class ResourcesWithoutAuthActivity extends AppCompatActivity {
 
         Resource resource1 = Resource.from(UUID.randomUUID().toString(),
                 "All Sites", "Get all sites from Meli", "/sites",
-                ResourceType.WITHOUT_AUTH, HttpMethod.GET);
+                ResourceType.SITES, HttpMethod.GET);
 
         Resource resource2 = Resource.from(UUID.randomUUID().toString(),
                 "All Categories of Colombia", "Get all categories of Colombia from Meli",
-                "/sites/MCO/categories", ResourceType.WITHOUT_AUTH, HttpMethod.GET);
+                "/sites/MCO/categories", ResourceType.CATEGORIES, HttpMethod.GET);
 
         List<Resource> resources = new ArrayList<>();
         resources.add(resource1);
